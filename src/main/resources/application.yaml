@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: mcp-server
+  ai:
+    mcp:
+      server:
+        name: mcp-server
+        version: 1.0.0
+        protocol: STREAMABLE
+        stdio: false
+        type: SYNC
+
