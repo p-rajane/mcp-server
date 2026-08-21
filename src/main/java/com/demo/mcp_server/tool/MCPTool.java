@@ -17,19 +17,32 @@ import java.nio.charset.StandardCharsets;
 public class MCPTool {
 
     @Value("classpath:sachin tendulkar.md")
-    private Resource resource;
+    private Resource sachinResource;
+
+    @Value("classpath:virat kohli.md")
+    private Resource viratResource;
+
+
 
     @McpTool(name = "getAboutTendulkar", description = "This tool will return information about Sachin Tendulkar.")
     public String getAboutTendulkar() {
-        Resource resource = new org.springframework.core.io.ClassPathResource("patients.json");
         try {
-            return readFile();
+            return readFile(sachinResource);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
 
-    public String readFile() throws Exception {
+    @McpTool(name = "getAboutKohli", description = "This tool will return information about Virat Kohli.")
+    public String getAboutKohli() {
+        try {
+            return readFile(viratResource);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public String readFile(Resource resource) throws Exception {
         try (InputStream inputStream = resource.getInputStream()) {
             return new String(inputStream.readAllBytes(), StandardCharsets.UTF_8);
         }

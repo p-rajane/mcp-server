@@ -10,3 +10,5 @@ spring:
         stdio: false
         type: SYNC
 
+server:
+  port: 8090
